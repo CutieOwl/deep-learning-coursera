@@ -92,9 +92,11 @@ def compute_cost(a3, Y):
     cost - value of the cost function
     """
     m = Y.shape[1]
+    assert(m != 0)
+    #print(m)
     
-    logprobs = np.multiply(-np.log(a3),Y) + np.multiply(-np.log(1 - a3), 1 - Y)
-    cost = 1./m * np.sum(logprobs)
+    logprobs = -(np.log(a3) * Y) + -(np.log(1 - a3) * (1 - Y))
+    cost = 1/m * np.sum(logprobs)
     
     return cost
 
